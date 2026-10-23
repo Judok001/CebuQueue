@@ -49,3 +49,22 @@ where the TODO is.
 - Real SMS gateway
 - Appointment time slots (right now a booking is a queue number for a chosen date)
 - Password reset, audit log, export reports to CSV/PDF
+## Current milestone: User Registration & User Login
+
+This release delivers two modules:
+
+**User Registration**
+- Server: `POST /api/auth/register` in `server/src/routes/auth.js`
+- Client: `client/src/pages/Register.jsx`
+- DB: `users` table in `database/schema.sql`
+- Validation: duplicate email rejected, password hashed (bcrypt)
+
+**User Login**
+- Server: `POST /api/auth/login` in `server/src/routes/auth.js`
+- Client: `client/src/pages/Login.jsx`
+- Issues a JWT signed with `JWT_SECRET` (see `server/.env.example`)
+- Token verified in `server/src/middleware/auth.js`
+
+To test these two modules: register a new account, log out, log back in with the same credentials, and confirm the JWT is returned. Queue, SMS, and admin dashboard features are out of scope for this milestone.
+
+---
